@@ -22,6 +22,11 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+    public function books(){
+        return $this->belongsToMany(Book::class,'borrowings')
+        ->withPivot('borrowed_at','returned_at')
+        ->withTimestamps();
+    }
     protected function casts(): array
     {
         return [

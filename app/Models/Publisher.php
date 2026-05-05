@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Publisher extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','adress'];
+    protected $fillable = ['PUB_NOME','PUB_SENHA'];
 
     public function Books(){
         return $this -> hasMany(Book::class);

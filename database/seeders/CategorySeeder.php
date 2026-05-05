@@ -4,13 +4,14 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Category;
 
 class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run()
+    public function run(): void
     {
         $Categories = [
          'ficção', 'não-ficção','fantasia',
@@ -18,9 +19,8 @@ class CategorySeeder extends Seeder
          'tecnologia','arte','culinária',
          'viagem'
         ];
-
         foreach($Categories as $Category){
-            Category::create(['name' => $Category]);
+            Category::create(['CAT_NOME' => $Category]);
         }
     }
 }

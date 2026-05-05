@@ -16,9 +16,9 @@ class AuthorFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email'=>$this->faker->email(),
-            'birth_date'=>$this->faker->date()
+            'AU_NOME' => $this->faker->name(),
+            'AU_EMAIL'=>$this->faker->email(),
+            'AU_ANIVERSARIO'=>$this->faker->date()
         ];
     }
 }
