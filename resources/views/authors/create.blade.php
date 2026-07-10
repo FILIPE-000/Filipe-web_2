@@ -1,0 +1,56 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1 class="my-4">Adicionar Autor(a)</h1>
+
+    <form action="{{ route('authors.store') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+            @error('name')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">email</label>
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+            @error('email')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="birthday" class="form-label">Data de Nascimento</label>
+            <input type="date" class="form-control @error('birthday') is-invalid @enderror" id="datetime" name="birthday" value="{{ old('birthday') }}" required>
+            @error('birthday')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="author_id" class="form-label">ID do Autor(a)</label>
+            <input type="number" class="form-control @error('author_id')
+            is-invalid @enderror" id="author_id" name="author_id" required>
+            @error('author_id')
+                <div class="invalid-feedback">
+                 {{ $message }}
+                </div>
+            @enderror
+        </div>
+        
+
+        <button type="submit" class="btn btn-success">
+            <i class="bi bi-save"></i> Salvar
+        </button>
+        <a href="{{ route('authors.index') }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Voltar
+        </a>
+    </form>
+</div>
+@endsection

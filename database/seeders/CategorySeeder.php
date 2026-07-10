@@ -20,7 +20,7 @@ class CategorySeeder extends Seeder
          'viagem'
         ];
         foreach($Categories as $Category){
-            Category::create(['CAT_NOME' => $Category]);
+            Category::create(['name' => $Category]);
         }
     }
 }

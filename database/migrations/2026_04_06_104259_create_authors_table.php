@@ -14,9 +14,9 @@ return new class extends Migration
      Schema::create('authors', function 
      (Blueprint $table){
      $table-> id();
-     $table-> STRING('AU_NOME');
-     $table-> STRING('AU_EMAIL')->unique();
-     $table-> DATETIME('AU_ANIVERSARIO')->nullable();
+     $table-> STRING('name');
+     $table-> STRING('email')->unique();
+     $table-> DATE('birthday')->nullable();
      $table-> timestamps();
     });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-     schema::dropIfExists('authors');
+     Schema::dropIfExists('authors');
   }
 };

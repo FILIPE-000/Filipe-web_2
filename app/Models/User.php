@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
+
+#[Fillable(['name', 'email', 'password', 'role', 'debit'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -24,7 +25,7 @@ class User extends Authenticatable
      */
     public function books(){
         return $this->belongsToMany(Book::class,'borrowings')
-        ->withPivot('borrowed_at','returned_at')
+        ->withPivot('id', 'borrowed_at','returned_at')
         ->withTimestamps();
     }
     protected function casts(): array
@@ -33,5 +34,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    
+    public function isAdmin(){
+    return $this->role === 'admin';
+    }
+
+    public function isBibliotecario(){
+    return $this->role === 'bibliotecario';
+    }
+
+    public function isCliente(){
+    return $this->role === 'cliente';
     }
 }

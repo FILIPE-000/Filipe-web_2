@@ -8,7 +8,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['CAT_NOME'];
+    protected $fillable = ['name'];
 
     public function Books(){
         return $this -> hasMany(Book::class);

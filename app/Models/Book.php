@@ -8,13 +8,13 @@ use App\Models\Author;
 use App\Models\Category;
 use App\Models\Publisher;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class Book extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['BO_TITULO','id','id'
-    ,'id','Publisher_year'];
+    protected $fillable = ['title', 'author_id', 'category_id', 'publisher_id', 'pages', 'published_year', 'cover_image'];
 
     public function Author(){
         return $this -> belongsTo(Author::class);
@@ -27,7 +27,8 @@ class Book extends Model
     }
     public function users(){
         return $this->belongsToMany(User::class, 'borrowings')
-        ->withPivot('borrowed_at', 'returned_at')
+        ->withPivot('id', 'borrowed_at', 'returned_at')
         ->withTimestamps();
     }
 }
+?>

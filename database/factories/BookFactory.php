@@ -18,8 +18,8 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-    'BO_TITULO' => fake()->sentence(),
-    'BO_PAGINA' => fake()->numberBetween(50, 900),
+    'title' => fake()->sentence(),
+    'pages' => fake()->numberBetween(50, 900),
         ];
     }
 }
